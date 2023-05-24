@@ -34,7 +34,7 @@ def hit_target(t, u):
     return u[2]
 # Stop the integration when we hit the target.
 hit_target.terminal = True
-# We must be moving downwards (don't stop before we begin moving upwards!)
+# We must be moving downwards
 hit_target.direction = -1
 
 def max_height(t, u):
