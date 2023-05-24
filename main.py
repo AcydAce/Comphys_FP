@@ -18,19 +18,19 @@ v0 = 50
 phi0 = np.radians(65)
 
 def deriv(t, u):
-    x, xdot, z, zdot = u
-    speed = np.hypot(xdot, zdot) #calculates the magnitude (speed) of a two-dimensional vector
+    x, xdot, y, ydot = u
+    speed = np.hypot(xdot, ydot) #calculates the magnitude (speed) of a two-dimensional vector
     xdotdot = -k/m * speed * xdot
-    zdotdot = -k/m * speed * zdot - g
-    return xdot, xdotdot, zdot, zdotdot
+    ydotdot = -k/m * speed * ydot - g
+    return xdot, xdotdot, ydot, ydotdot
 
-# Initial conditions: x0, v0_x, z0, v0_z.
+# Initial conditions: x0, v0_x, y0, v0_y.
 u0 = 0, v0 * np.cos(phi0), 0., v0 * np.sin(phi0)
 # Integrate up to tf unless we hit the target sooner.
 t0, tf = 0, 50
 
 def hit_target(t, u):
-    # We've hit the target if the z-coordinate is 0.
+    # We've hit the target if the y-coordinate is 0.
     return u[2]
 # Stop the integration when we hit the target.
 hit_target.terminal = True
@@ -38,7 +38,7 @@ hit_target.terminal = True
 hit_target.direction = -1
 
 def max_height(t, u):
-    # The maximum height is obtained when the z-velocity is zero.
+    # The maximum height is obtained when the y-velocity is zero.
     return u[3]
 
 soln = solve_ivp(deriv, (t0, tf), u0, dense_output=True,
@@ -53,10 +53,10 @@ t = np.linspace(0, soln.t_events[0][0], 100)
 
 # Retrieve the solution for the time grid and plot the trajectory.
 sol = soln.sol(t)
-x, z = sol[0], sol[2]
+x, y = sol[0], sol[2]
 print('Range to target, xmax = {:.2f} m'.format(x[-1]))
-print('Maximum height, zmax = {:.2f} m'.format(max(z)))
-plt.plot(x, z)
+print('Maximum height, ymax = {:.2f} m'.format(max(y)))
+plt.plot(x, y)
 plt.xlabel('x /m')
-plt.ylabel('z /m')
+plt.ylabel('y /m')
 plt.show()
