@@ -19,7 +19,7 @@ phi0 = np.radians(65)
 
 def deriv(t, u):
     x, xdot, z, zdot = u
-    speed = np.hypot(xdot, zdot)
+    speed = np.hypot(xdot, zdot) #calculates the magnitude (speed) of a two-dimensional vector
     xdotdot = -k/m * speed * xdot
     zdotdot = -k/m * speed * zdot - g
     return xdot, xdotdot, zdot, zdotdot
