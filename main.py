@@ -14,7 +14,7 @@ g = 9.81
 k = 0.5 * c * rho_air * A
 
 # Initial speed and launch angle (from the horizontal).
-v0 = 50
+v0 = 469
 phi0 = np.radians(65)
 
 def deriv(t, u):
@@ -25,7 +25,7 @@ def deriv(t, u):
     return xdot, xdotdot, ydot, ydotdot
 
 # Initial conditions: x0, v0_x, y0, v0_y.
-u0 = 0, v0 * np.cos(phi0), 0., v0 * np.sin(phi0)
+u0 = 0, v0 * np.cos(phi0), 940., v0 * np.sin(phi0)
 # Integrate up to tf unless we hit the target sooner.
 t0, tf = 0, 50
 
