@@ -10,24 +10,24 @@ m = 0.2
 # Air density (kg.m-3), acceleration due to gravity (m.s-2).
 rho_air = 1.28
 g = 9.81
-# For convenience, define  this constant.
-k = 0.5 * c * rho_air * A
+# For convenience, define this constant.
+k = 0.05 * c * rho_air * A
 
 # Initial speed and launch angle (from the horizontal).
-v0 = 50
-phi0 = np.radians(65)
+v0 = 469
+phi0 = np.radians(0)
 
 def deriv(t, u):
     x, xdot, y, ydot = u
-    speed = np.hypot(xdot, ydot) #calculates the magnitude (speed) of a two-dimensional vector
+    speed = np.hypot(xdot, ydot)  # calculates the magnitude (speed) of a two-dimensional vector
     xdotdot = -k/m * speed * xdot
     ydotdot = -k/m * speed * ydot - g
     return xdot, xdotdot, ydot, ydotdot
 
 # Initial conditions: x0, v0_x, y0, v0_y.
-u0 = 0, v0 * np.cos(phi0), 100., v0 * np.sin(phi0)
+u0 = 0, v0 * np.cos(phi0), 1096., v0 * np.sin(phi0)
 # Integrate up to tf unless we hit the target sooner.
-t0, tf = 0, 50
+t0, tf = 0, 100
 
 def hit_target(t, u):
     # We've hit the target if the y-coordinate is 0.
@@ -56,7 +56,9 @@ sol = soln.sol(t)
 x, y = sol[0], sol[2]
 print('Range to target, xmax = {:.2f} m'.format(x[-1]))
 print('Maximum height, ymax = {:.2f} m'.format(max(y)))
+plt.figure(figsize=(8, 6))
+plt.rcParams.update({'font.size': 12})
 plt.plot(x, y)
-plt.xlabel('x /m')
-plt.ylabel('y /m')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
 plt.show()
