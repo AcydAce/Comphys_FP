@@ -27,19 +27,23 @@ def calculate_trajectory():
 
         t = 0
         while True:
-
+            
             # horizontal motion equation + wind speed
             # vertical motion equation
             x = max(0, (initial_velocity * math.cos(launch_angle) + wind_speed) * t)
             y = max(0, (initial_velocity * math.sin(launch_angle) - (0.5 * g * (t ** 2))) + initial_height)
 
             if y >= 0:
+                
+
                 velocity = math.sqrt((initial_velocity * math.cos(launch_angle) - wind_speed) ** 2 +
                                      (initial_velocity * math.sin(launch_angle)) ** 2)
-                
+
                 # Air resistance equation
                 drag_force = 0.5 * drag_coefficient * air_density * velocity ** 2
+                # gravitational force equation
                 gravitational_force = bomb_mass * g
+                # acceleration
                 acceleration = (gravitational_force - drag_force) / bomb_mass
                 horizontal_velocity = (initial_velocity * math.cos(launch_angle) - wind_speed)
                 vertical_velocity = initial_velocity * math.sin(launch_angle) - acceleration * t
