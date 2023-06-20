@@ -28,36 +28,21 @@ def calculate_trajectory():
 
         t = 0
         while True:
-<<<<<<< HEAD
             # Horizontal motion equation + wind speed
-=======
-            
-            # horizontal motion equation + wind speed
-            # vertical motion equation
->>>>>>> 987e47ffbdc1c6ebcf017bc4aea1d9f0bc0fa9c6
             x = max(0, (initial_velocity * math.cos(launch_angle) + wind_speed) * t)
             # Vertical motion equation
             y = max(0, (initial_velocity * math.sin(launch_angle) - (0.5 * g * (t ** 2))) + initial_height)
             # Calculate weight factor based on current height
             weight_factor = bomb_mass * (g / (1 + (y / 6371000))**2)
             if y >= 0:
-                
-
                 velocity = math.sqrt((initial_velocity * math.cos(launch_angle) - wind_speed) ** 2 +
                                      (initial_velocity * math.sin(launch_angle)) ** 2)
 
                 # Air resistance equation
-<<<<<<< HEAD
                 drag_force = 0.5 * drag_coefficient * (air_density ** 100) * velocity ** 2
                 # Gravitational force equation with weight factor
                 gravitational_force = bomb_mass * g * weight_factor
                 # Acceleration
-=======
-                drag_force = 0.5 * drag_coefficient * air_density * velocity ** 2
-                # gravitational force equation
-                gravitational_force = bomb_mass * g
-                # acceleration
->>>>>>> 987e47ffbdc1c6ebcf017bc4aea1d9f0bc0fa9c6
                 acceleration = (gravitational_force - drag_force) / bomb_mass
                 horizontal_velocity = ((initial_velocity * math.cos(launch_angle) + wind_speed ) / weight_factor)
                 vertical_velocity = initial_velocity * math.sin(launch_angle) - acceleration * t
@@ -197,17 +182,10 @@ wind_speed_label.place(x = 10, y = 170)
 wind_speed_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
 wind_speed_entry.place(x = 340, y = 175)
 
-<<<<<<< HEAD
 drag_coefficient_label = tk.Label(window, text="Drag Coefficient (Cd):", font=('Comic Sans MS', 20))
 drag_coefficient_label.place(x = 10, y = 225)
 drag_coefficient_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
 drag_coefficient_entry.place(x = 340, y = 230)
-=======
-drag_coefficient_label = tk.Label(window, text="Drag Coefficient (0.47):")
-drag_coefficient_label.pack()
-drag_coefficient_entry = tk.Entry(window)
-drag_coefficient_entry.pack()
->>>>>>> 987e47ffbdc1c6ebcf017bc4aea1d9f0bc0fa9c6
 
 bomb_mass_label = tk.Label(window, text="Bomb Mass (kg):", font=('Comic Sans MS', 20))
 bomb_mass_label.place(x = 10, y = 280)
