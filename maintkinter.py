@@ -43,7 +43,7 @@ def calculate_trajectory():
                 gravitational_force = bomb_mass * g * weight_factor
                 # Acceleration
                 acceleration = (gravitational_force - drag_force) / bomb_mass
-                horizontal_velocity = (((initial_velocity ** 2) * math.cos(launch_angle) + wind_speed ) / weight_factor)
+                horizontal_velocity = ((initial_velocity * math.cos(launch_angle) + wind_speed ) / weight_factor)
                 vertical_velocity = initial_velocity * math.sin(launch_angle) - acceleration * t
                 x = x + horizontal_velocity * t
                 y = y + vertical_velocity * t - (0.5 * acceleration * t ** 2)
