@@ -1,1 +1,4 @@
-# Comphys_FP
+# Computational Physics Final Project
+
+by Bayu and Sandrian
+
