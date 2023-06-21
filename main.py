@@ -20,9 +20,9 @@ def calculate_trajectory():
         launch_angle = math.radians(float(angle_entry.get()))
         initial_height = float(height_entry.get())
         wind_speed = float(wind_speed_entry.get())
-        drag_coefficient = float(drag_coefficient_entry.get())
+        drag_coefficient = 0.47
         bomb_mass = float(bomb_mass_entry.get())
-        air_density = float(air_density_entry.get())
+        air_density = 0.9
         time_step = 0.0001  # Time step for simulation
         g = 9.8  # Acceleration due to gravity
 
@@ -94,9 +94,9 @@ def calculate_trajectory():
         # --------------- DISPLAY RESULTS -----------------------
 
         finalDTitle = tk.Label(window, text="Position of Impact:", font=('Comic Sans MS', 20))
-        finalDTitle.place(x = 900, y = 600)            
+        finalDTitle.place(x = 900, y = 600)
 
-        finalDistance_label = tk.Label(window, text=f"{round(final_x, 2)} meters from release", font=('Comic Sans MS', 17))
+        finalDistance_label = tk.Label(window, text=f"{round(final_x, 2)} meters from release                 ", font=('Comic Sans MS', 17))
         finalDistance_label.place(x = 900, y = 700)
 
     except ValueError:
@@ -182,20 +182,10 @@ wind_speed_label.place(x = 10, y = 170)
 wind_speed_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
 wind_speed_entry.place(x = 340, y = 175)
 
-drag_coefficient_label = tk.Label(window, text="Drag Coefficient (Cd):", font=('Comic Sans MS', 20))
-drag_coefficient_label.place(x = 10, y = 225)
-drag_coefficient_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
-drag_coefficient_entry.place(x = 340, y = 230)
-
 bomb_mass_label = tk.Label(window, text="Bomb Mass (kg):", font=('Comic Sans MS', 20))
-bomb_mass_label.place(x = 10, y = 280)
+bomb_mass_label.place(x = 10, y = 225)
 bomb_mass_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
-bomb_mass_entry.place(x = 340, y = 285)
-
-air_density_label = tk.Label(window, text="Air Density (kg/m^3):", font=('Comic Sans MS', 20))
-air_density_label.place(x = 10, y = 335)
-air_density_entry = tk.Entry(window, width=30, font=('Comic Sans MS', 20))
-air_density_entry.place(x = 340, y = 340)
+bomb_mass_entry.place(x = 340, y = 230)
 
 #Example bomb label
 air_density_label = tk.Label(window, text="Example Bomb \nData:", font=('Comic Sans MS', 20))
