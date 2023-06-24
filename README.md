@@ -1,4 +1,7 @@
 # Computational Physics Final Project
 
-by Bayu and Sandrian
+created by:
+
+Sandrian Wardana - 2502016411
+Bayu Hartho - 2502013731
 
